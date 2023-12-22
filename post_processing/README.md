@@ -1,38 +1,29 @@
-# UTrack Database Moisture Tracking Routine 
+# Post-processing of moisture footprints of 40 Ramsar wetlands
 ## Simon F. Fahrländer, Feb 2023
 ## Potsdam Institute for Climate Impact Research - (PIK)
 
-
 #### =================================================================
 ### Scripts: 
-#### utils.py --> functions to screen masks for coordinates and writing out job packages for core splits 
-#### create_params.py --> script to create parameter file with job packages 
 #### settings.py --> WKDIRs!
-#### utrack_functions.py --> Tracking Functions 
-#### main.py --> job runner
-#### utrack_slurm.sh --> send jobs to HPC
+#### assemble_runs.py --> function that adds up moisture footprints of the same regions based on the different processing batches (params.csv)
+#### process_functions_updated.py --> calculates moisture recycling indices 
+#### PminusE_trend.py --> calculates Mann-Kendall trends of P-E data for selected regions 
+#### LC_Psource_functions.py --> connects moisture sources to land cover classification
 #### =================================================================
 
 
 ### Example start of routine: 
 
-Activate conda environment containing all necessary modules
+Assemble process batches 
+`python3 assemble_runs.py´
 
-`conda activate geo_ext`
+Calculate moisture recycling indices 
+`python3 process_functions.py' 
 
-Create parameters
+Calculate Mann-Kendall trends
+`python3 PminusE_trend.py´
 
-`python3 create_params.py`
+Connect land cover to moisture sources --> needs to be looped for multiple regions or run individually for each region 
+`python3 LC_Psource_functions.py´
 
-Test job runner locally
-
-`python3 main.py 1`
-
-Deactivate conda environment
-
-`conda deactivate`
-
-Submit job to slurm
-
-`sbatch run_on_slurm.sh`
 #### =================================================================
