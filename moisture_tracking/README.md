@@ -24,15 +24,12 @@ Create parameters
 
 `python3 create_params.py`
 
-Test job runner locally
+Test single job runner locally
 
 `python3 main.py 1`
 
-Deactivate conda environment
+Run all on one CPU or split up accordingly (e.g., on an HPC or server via the parameters) 
 
-`conda deactivate`
+`python3 main.py´
 
-Submit job to slurm
-
-`sbatch run_on_slurm.sh`
 #### =================================================================
